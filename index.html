@@ -1,133 +1,211 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
+<html lang="en"> <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Công ty TNHH Tâm Châu</title>
-    <link rel="shortcut icon" type="image/png" href="https://tamchau.com/wp-content/uploads/2022/10/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tam Chau - Welcome</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
     <style>
         :root {
-            --primary-color: #3498db;
-            --text-color: #333;
-            --bg-color: #f4f7f6;
+            --primary-green: #03592e;
+            --dark-green: #27ae60;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --card-bg: rgba(255, 255, 255, 0.55);
         }
 
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            text-align: center;
+            overflow: hidden;
+            position: relative;
         }
 
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 400px;
-            width: 90%;
+        .bg-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('images/bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            -webkit-filter: blur(8px);
+            transform: scale(1.1);
+            z-index: -1;
+        }
+
+        .bg-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: -1;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            width: 85%;
+            max-width: 380px;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            text-align: center;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .logo {
-            max-width: 120px;
-            margin-bottom: 20px;
+            max-width: 140px;
+            height: auto;
+            margin-bottom: 1.5rem;
         }
 
-        h2 { margin-bottom: 30px; font-weight: 500; }
+        .welcome-text {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            line-height: 1.4;
+            font-weight: 600;
+            min-height: 3.6em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         .nav-buttons {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
+            margin-bottom: 2rem;
         }
 
         .btn {
             text-decoration: none;
-            padding: 12px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 8px;
-            transition: transform 0.2s, background 0.2s;
+            padding: 14px 20px;
+            border-radius: 50px;
             font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: block;
+            border: none;
+            cursor: pointer;
+
+            background-color: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
         }
 
         .btn:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
+            background-color: var(--primary-green);
+            color: var(--text-light);
         }
 
         .lang-switcher {
-            margin-top: 30px;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
 
         .lang-btn {
-            border: none;
-            background: none;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: white;
+            padding: 6px 12px;
+            border-radius: 20px;
             cursor: pointer;
-            color: var(--primary-color);
-            margin: 0 5px;
-            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            transition: all 0.2s;
         }
 
-        .lang-btn:hover { text-decoration: underline; }
+        .lang-btn.active {
+            background-color: var(--text-dark);
+            color: white;
+            border-color: var(--text-dark);
+        }
+
     </style>
 </head>
 <body>
 
-<div class="container">
-    <img src="https://tamchau.com/wp-content/uploads/2022/10/logo-new.png" alt="Tamchau Logo" class="logo">
-    
-    <h2 id="thanks-msg">Cảm ơn bạn đã ghé thăm!</h2>
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
 
-    <div class="nav-buttons">
-        <a href="https://tamchau.com/" class="btn" id="btn-home">Trang chủ</a>
-        <a href="https://tamchau.com/cua-hang/" class="btn" id="btn-product">Sản phẩm</a>
-        <a href="https://tamchau.com/gioi-thieu/" class="btn" id="btn-about">Giới thiệu</a>
-    </div>
+    <div class="card">
+        <img src="images/logo-new.png" alt="Tam Chau Logo" class="logo">
+        
+        <p class="welcome-text" id="welcome-text">
+            Elevate your day with the pure essence of Bao Loc tea.
+        </p>
 
-    <div class="lang-switcher">
-        <button class="lang-btn" onclick="changeLang('vi')">Tiếng Việt</button> |
-        <button class="lang-btn" onclick="changeLang('en')">English</button> |
-        <button class="lang-btn" onclick="changeLang('zh')">中文</button>
+        <div class="nav-buttons">
+            <a href="https://tamchau.com/cua-hang/" class="btn btn-primary" id="btn-shop">Shop Now</a>
+            <a href="https://tamchau.com/" class="btn btn-secondary" id="btn-home">Home</a>
+            <a href="https://tamchau.com/gioi-thieu" class="btn btn-secondary" id="btn-about">About Us</a>
+        </div>
+
+        <div class="lang-switcher">
+            <button class="lang-btn" onclick="changeLang('vi')" id="lang-vi">VN</button>
+            <button class="lang-btn active" onclick="changeLang('en')" id="lang-en">EN</button>
+            <button class="lang-btn" onclick="changeLang('zh')" id="lang-zh">中文</button>
+        </div>
     </div>
-</div>
 
 <script>
     const content = {
-        vi: {
-            thanks: "Cảm ơn bạn đã ghé thăm!",
-            home: "Trang chủ",
-            product: "Sản phẩm",
-            about: "Giới thiệu"
-        },
         en: {
-            thanks: "Thank you for visiting!",
+            welcome: "Elevate your day with the pure essence of Bao Loc tea.",
+            shop: "Shop Now",
             home: "Home",
-            product: "Products",
-            about: "About Us"
+            about: "About Us",
+            title: "Tam Chau - Welcome"
+        },
+        vi: {
+            welcome: "Nâng tầm ngày mới với tinh túy thuần khiết của trà Bảo Lộc.",
+            shop: "Mua ngay",
+            home: "Trang chủ",
+            about: "Giới thiệu",
+            title: "Tam Châu - Chào mừng"
         },
         zh: {
-            thanks: "感谢您的光临！",
+            welcome: "用保禄茶的纯净精华，升华您的一天。",
+            shop: "立即 mua",
             home: "首页",
-            product: "产品",
-            about: "关于我们"
+            about: "关于我们",
+            title: "三珠 - 欢迎"
         }
     };
 
     function changeLang(lang) {
-        document.getElementById('thanks-msg').innerText = content[lang].thanks;
+        document.getElementById('welcome-text').innerText = content[lang].welcome;
+        document.getElementById('btn-shop').innerText = content[lang].shop;
         document.getElementById('btn-home').innerText = content[lang].home;
-        document.getElementById('btn-product').innerText = content[lang].product;
         document.getElementById('btn-about').innerText = content[lang].about;
         
+        document.title = content[lang].title;
         document.documentElement.lang = lang;
+
+        const buttons = document.querySelectorAll('.lang-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(`lang-${lang}`).classList.add('active');
+
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    const savedLang = localStorage.getItem('preferredLang') || 'en';
+    if (savedLang !== 'en') {
+        changeLang(savedLang);
     }
 </script>
 
