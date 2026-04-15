@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>Công ty TNHH Tâm Châu</title>
+    <link rel="shortcut icon" type="image/png" href="https://tamchau.com/wp-content/uploads/2022/10/favicon.png">
     <style>
         :root {
             --primary-color: #3498db;
@@ -86,9 +87,9 @@
     <h2 id="thanks-msg">Cảm ơn bạn đã ghé thăm!</h2>
 
     <div class="nav-buttons">
-        <a href="/home" class="btn" id="btn-home">Trang chủ</a>
-        <a href="/products" class="btn" id="btn-product">Sản phẩm</a>
-        <a href="/about" class="btn" id="btn-about">Giới thiệu</a>
+        <a href="https://tamchau.com/" class="btn" id="btn-home">Trang chủ</a>
+        <a href="https://tamchau.com/cua-hang/" class="btn" id="btn-product">Sản phẩm</a>
+        <a href="https://tamchau.com/gioi-thieu/" class="btn" id="btn-about">Giới thiệu</a>
     </div>
 
     <div class="lang-switcher">
@@ -126,7 +127,6 @@
         document.getElementById('btn-product').innerText = content[lang].product;
         document.getElementById('btn-about').innerText = content[lang].about;
         
-        // Cập nhật thuộc tính lang của thẻ html để tốt cho SEO
         document.documentElement.lang = lang;
     }
 </script>
