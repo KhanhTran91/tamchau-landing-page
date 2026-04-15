@@ -151,8 +151,8 @@
 
         <div class="nav-buttons">
             <a href="https://tamchau.com/cua-hang/" class="btn btn-primary" id="btn-shop">Shop Now</a>
-            <a href="https://tamchau.com/dich-vu/" class="btn btn-secondary" id="btn-home">Our Services</a>
-            <a href="https://tamchau.com/lien-he/" class="btn btn-secondary" id="btn-about">Contact Us</a>
+            <a href="https://tamchau.com/dich-vu/" class="btn btn-secondary" id="btn-services">Our Services</a>
+            <a href="https://tamchau.com/lien-he/" class="btn btn-secondary" id="btn-contact">Contact Us</a>
         </div>
 
         <div class="lang-switcher">
@@ -190,8 +190,8 @@
     function changeLang(lang) {
         document.getElementById('welcome-text').innerText = content[lang].welcome;
         document.getElementById('btn-shop').innerText = content[lang].shop;
-        document.getElementById('btn-home').innerText = content[lang].home;
-        document.getElementById('btn-about').innerText = content[lang].about;
+        document.getElementById('btn-services').innerText = content[lang].services;
+        document.getElementById('btn-contact').innerText = content[lang].contact;
         
         document.title = content[lang].title;
         document.documentElement.lang = lang;
